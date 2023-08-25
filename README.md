@@ -6,6 +6,8 @@ It also adds ticket information to the commit message. This is useful for teams 
 
 Conventional commits are helpful for determining the type of change that was made which can be used to automate tasks like semantic versioning, changelog generation, automated releases or just providing context at a glance when viewing the commit history.
 
+Whiles you can manually create these, this script eases adding in proper formatting and ticket information. It also provides a list of staged files before committing to ensure you don't accidentally commit files you didn't intend to.
+
 For more information on conventional commits, see the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) website.
 
 ## Features
@@ -49,14 +51,19 @@ For more information on conventional commits, see the [Conventional Commits](htt
     examples
     ```
     jcc --feat "Add new feature" -y 
-    // generates feat: [TEAM-123] Add new feature
+    // commits staged files with message: "feat: [TEAM-123] Add new feature"
 
-    jcc --fix "Fix bug" -y
-    // generates fix: [TEAM-123] Fix bug
+    jcc --fix "Fix spaceship flux capacitor" -y
+    // message: "fix: [NASA-3212] Fix spaceship flux capacitor"
 
-    jcc --chore "Update dependencies" --yes
-    // generates chore: [TEAM-123] Update dependencies
+    jcc c "Move autopilot behind paid wall" --yes
+    // message: "chore: [TESLA-732] Move autopilot behind paid wall"
     ```
+To ease use, arguments are strictly positional. This means you can omit the preceeding `--` and the script will still work. For example, the following command is equivalent to the first example above:
+
+  ```
+    jcc f "Add new feature" y
+  ```
 
     You can also use abbreviations for the commit type. Below is the list of supported abbreviations:
     ```
